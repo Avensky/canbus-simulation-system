@@ -59,24 +59,24 @@ All data in the demo is **artificial**.
 ---
 
 ## 🧰 System Architecture
-         [ CAN Hardware ]
+             [ CAN Hardware ]
 
-                ↓
+                    ↓
       
- [ Raspberry Pi + CAN Interface ]
+      [ Raspberry Pi + CAN Interface ]
 
-                ↓
+                    ↓
       
-     [ Python CAN Listener ]
+          [ Python CAN Listener ]
 
-                ↓
+                    ↓
       
-    [ WebSocket Data Server ]
+         [ WebSocket Data Server ]
 
-                ↓
+                    ↓
       
-[ React / Three.js Visualization ]
-
+    [ React / Three.js Visualization ]
+                     
 
 ### Architecture Layers
 |           Layer         |                      Description                          |
