@@ -126,61 +126,42 @@ The demo frontend includes:
 }
 ```
 
-📚 Documentation
+## 📚 Documentation
 
 Located in /docs/
-
-system-overview.md – Full system explanation
-
-research-background.md – CAN bus architecture and motivation
-
-physics-engine-notes.md – Vehicle dynamics modeling
-
-fake-can-frames.json – Synthetic dataset
+- system-overview.md – Full system explanation
+- research-background.md – CAN bus architecture and motivation
+- physics-engine-notes.md – Vehicle dynamics modeling
+- fake-can-frames.json – Synthetic dataset
 
 
-📊 Technologies
+## 📊 Technologies
 
-Category	Tools
-
-Embedded	Raspberry Pi, CANable, socketcan
-
-Backend	Python, python-can, asyncio
-
+Category	      Tools
+Embedded	      Raspberry Pi, CANable, socketcan
+Backend	      Python, python-can, asyncio
 Communication	WebSockets, JSON
-
-Simulation	Cannon.js or custom JS physics
-
-Frontend	React, Three.js
-
+Simulation	      Cannon.js or custom JS physics
+Frontend	      React, Three.js
 Documentation	Markdown, Draw.io
 
 
-⚠️ Disclaimer
-
-This repo contains no proprietary or NIWC code.
-
-All CAN signals used in demos are fully synthetic.
-
-Architecture is generalized for portfolio and educational use.
+## ⚠️ Disclaimer
+- This repo contains no proprietary or NIWC code.
+- All CAN signals used in demos are fully synthetic.
+- Architecture is generalized for portfolio and educational use.
 
 
-🧑‍🔬 About Me
+## 🧑‍🔬 About Me
 
 I am a Cognitive Science (Machine Learning) and Computer Science–focused research student interested in:
-
-embedded AI systems
-
-simulation engineering
-
-computational modeling
-
-robotics and autonomy
-
-automotive systems
-
-machine learning pipelines
+- embedded AI systems
+- simulation engineering
+- computational modeling
+- robotics and autonomy
+- automotive systems
+- machine learning pipelines
 
 This project represents the intersection of software engineering, cognitive science, and real-time embedded systems.
 
-⭐ If you find this project valuable, please consider starring the repo!
+## ⭐ If you find this project valuable, please consider starring the repo!
