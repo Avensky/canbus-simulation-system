@@ -137,13 +137,14 @@ Located in /docs/
 
 ## 📊 Technologies
 
-Category	      Tools
-Embedded	      Raspberry Pi, CANable, socketcan
-Backend	      Python, python-can, asyncio
-Communication	WebSockets, JSON
-Simulation	      Cannon.js or custom JS physics
-Frontend	      React, Three.js
-Documentation	Markdown, Draw.io
+|Category	      |                 Tools              |
+|-----------------|------------------------------------|
+|**Embedded**     |  Raspberry Pi, CANable, socketcan  |
+|**Backend**      |  Python, python-can, asyncio       |
+|**Communication**|  WebSockets, JSON                  |
+|**Simulation**   |  Cannon.js or custom JS physics    |
+|**Frontend**     |  React, Three.js                   |
+|**Documentation**|  Markdown, Draw.io                 |
 
 
 ## ⚠️ Disclaimer
