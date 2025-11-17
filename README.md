@@ -174,3 +174,8 @@ I am a Cognitive Science (Machine Learning) and Computer Science–focused resea
 This project represents the intersection of software engineering, cognitive science, and real-time embedded systems.
 
 ## ⭐ If you find this project valuable, please consider starring the repo!
+
+---
+
+# End of Document
+
