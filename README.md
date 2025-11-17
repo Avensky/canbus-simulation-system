@@ -59,41 +59,25 @@ All data in the demo is **artificial**.
 ---
 
 ## 🧰 System Architecture
-
 [ CAN Hardware ]
-
-↓
-
+      ↓
 [ Raspberry Pi + CAN Interface ]
-
-↓
-
+      ↓
 [ Python CAN Listener ]
-
-↓
-
+      ↓
 [ WebSocket Data Server ]
-
-↓
-
+      ↓
 [ React / Three.js Visualization ]
 
 
 ### Architecture Layers
-
-| Layer | Description |
-
-|-------|-------------|
-
-| **Hardware Layer** | Raspberry Pi + CAN transceiver + OBD-II connection |
-
-| **Data Layer** | Python listener for CAN signals, message normalization |
-
-| **Communication Layer** | WebSocket server for broadcasting high-frequency frames |
-
-| **Simulation Layer** | Vehicle physics engine: forces, suspension, RPM, movement |
-
-| **Visualization Layer** | Gauges, 3D scene, charts, real-time signal tracking |
+|           Layer         |                      Description                          |
+|-------------------------|-----------------------------------------------------------|
+|   **Hardware Layer**    | Raspberry Pi + CAN transceiver + OBD-II connection        |
+|     **Data Layer**      | Python listener for CAN signals, message normalization    |
+| **Communication Layer** | WebSocket server for broadcasting high-frequency frames   |
+|  **Simulation Layer**   | Vehicle physics engine: forces, suspension, RPM, movement |
+| **Visualization Layer** | Gauges, 3D scene, charts, real-time signal tracking       |
 
 See `/docs/system-overview.md` for complete details.
 
