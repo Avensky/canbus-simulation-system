@@ -47,18 +47,52 @@ This repository contains the **safe public version** of that work.
 
 See the `demo/` folder for:
 
-- Synthetic CAN data samples  
 - A JavaScript visualization demo  
-- Speed + RPM gauges  
-- Optional 3D wheel/vehicle animation  
+- Speed + RPM + fuel + temp gauges
+- 3D wheel physics / 4 wheel vehicle suspension
+- Collisions (Not in demo, but fully functional)  
 - Screenshots  
 - `video-demo.mp4` (demo recording)  
 
 All data in the demo is **artificial**.
 
+## 📊 Data Samples (Synthetic Telemetry)
+ `/data` directory contains **synthetic CAN-style telemetry datasets** used to demonstrate the system’s playback, visualization, and preprocessing pipelines.  
+These files simulate realistic throttle, RPM, and timing behavior while containing **no proprietary or hardware-derived CAN frames**.
+
+---
+
+## 📁 Included Files
+Located in /data/
+
+### 🔸 `scion-frs-throttle_raw.csv`
+- Raw synthetic throttle waveform  
+- High-frequency time-series data  
+- Useful for testing parsers and preprocessing steps  
+
+### 🔹 `scion-frs-throttle_logs.csv`
+- Cleaned & structured throttle signals  
+- Ideal for dashboards and ML examples  
+- Demonstrates typical CAN-adjacent log formatting  
+
+📌 For a full description of the datasets, visit:  
+➡️ **[`/data/README.md`](data/README.md)**
+
+---
+
+## 🚀 Suggested Uses
+
+- Driving frontend gauges and animations
+- Training small time-series ML models
+- Demonstrating CSV → JSON pipelines
+- Teaching CAN-style preprocessing workflows
+- Creating reproducible simulation playback demos
+
+
 ---
 
 ## 🧰 System Architecture
+
              [ CAN Hardware ]
 
                     ↓
@@ -76,7 +110,7 @@ All data in the demo is **artificial**.
                     ↓
       
     [ React / Three.js Visualization ]
-                     
+
 
 ### Architecture Layers
 |           Layer         |                      Description                          |
@@ -117,22 +151,12 @@ This makes the domain ideal for ML, AI modeling, and signal decoding research.
 
 The demo frontend includes:
 
-- A simulated CAN feed (`fake-can-frames.json`)  
+<!-- - A simulated CAN feed (`fake-can-frames.json`)   -->
+- 3D Simulation
 - Live gauge updates  
 - Line charts  
-- Optional 3D visual element  
 - Modular signal parser  
 
-### Example synthetic frame:
-
-```json
-{
-  "id": "0x100",
-  "timestamp": 0.421,
-  "speed_kph": 32,
-  "rpm": 2040
-}
-```
 
 ## 📚 Documentation
 
@@ -140,7 +164,6 @@ Located in /docs/
 - system-overview.md – Full system explanation
 - research-background.md – CAN bus architecture and motivation
 - physics-engine-notes.md – Vehicle dynamics modeling
-- fake-can-frames.json – Synthetic dataset
 
 
 ## 📊 Technologies
