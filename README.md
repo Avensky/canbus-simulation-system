@@ -112,4 +112,85 @@ For full documentation, visit:
 
 ---
 
-# 📊 D
+# 📊 Data Samples  
+
+The **`/data`** folder includes fully synthetic datasets used for:
+
+- visualization  
+- signal processing examples  
+- ML training prototypes  
+- reproducible demos  
+
+📁 Access them here: **[`/data/`](data/)**
+
+---
+
+# 🎮 Simulation Research  
+
+This simulation engine supports:
+
+- car-like vehicles  
+- tracked vehicles (tanks)  
+- future drone/UGV expansion  
+- customizable physics  
+- 1st-person / 3rd-person perspectives  
+- potential reinforcement learning integration
+
+The 3D environment is intentionally **interactive and game-like**, offering an intuitive understanding of vehicle dynamics and sensor feedback.
+
+---
+
+# 📘 Documentation Index  
+
+All research notes and system references live here:
+
+📗 **[`System Overview`](docs/system-overview.md)**  
+📙 **[`Physics Engine Notes`](docs/physics-engine-notes.md)**  
+📘 **[`Research Background`](docs/research-background.md)**  
+
+These documents explain:
+
+- scientific motivations  
+- physics modeling  
+- CAN bus context  
+- autonomy relevance  
+- ML & cognitive science ties  
+
+---
+
+# 🧑‍🔬 About the Researcher
+
+I am a Cognitive Science (Machine Learning) student pursuing research in:
+
+- **embedded AI systems**  
+- **simulation engineering**  
+- **computational modeling**  
+- **autonomous vehicles & drones**  
+- **sensor fusion and real-time data pipelines**  
+- **time-series ML & predictive modeling**  
+
+This project represents the convergence of these interests into an open research tool.
+
+---
+
+# ⭐ Support
+
+If this project contributes to your work, teaching, or research  
+please consider **starring the repository** to help others discover it.
+
+---
+
+# 📬 Contact
+
+Open an issue or message me if you'd like to collaborate on:
+
+- vehicle & drone physics  
+- ML-driven frame analysis  
+- cognitive modeling  
+- real-time telemetry  
+- simulation engineering  
+- visualization tools  
+
+---
+
+# End of Research Homepage
