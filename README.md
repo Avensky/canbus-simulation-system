@@ -1,4 +1,11 @@
-# 🛠️ CAN Bus Real-Time Vehicle Simulation System  
+# 🛠️ CAN Bus Real-Time Vehicle Simulation System
+
+## 🎮 Vehicle Simulation Demo
+
+<!-- Cinematic AAA-Style Trailer -->
+<video src="demo/vehicle-sim.mp4" controls width="100%">
+  Your browser does not support the video tag.
+</video>
 
 ### *Research Case Study • Simulation Engineering • Cognitive Systems • Embedded Computing*
 
@@ -52,10 +59,16 @@ See the `demo/` folder for:
 
 - `vehicle-sim.mp4` (driving demo recording)  
 - `canbus-demo.mp4` (canbus session demo recording)  
-- Showcases 2D speed, RPM, fuel & temp gauges
-- 3D physics / vehicle suspension / recorded session playback
-- Collisions (Not in demo, but fully integrated into the physics engine)  
-- Screenshots
+
+### 🔹 CAN Bus + Physics Demo  
+
+[![CAN Bus Demo](demo/vehicle-sim-Cover.jpg)](https://github.com/Avensky/canbus-simulation-system/blob/main/demo/canbus-demo.mp4)
+
+### 🔹 Cinematic Vehicle Simulation  
+
+[![Cinematic Vehicle Simulation](demo/vehicle-sim-Cover.jpg)](https://github.com/Avensky/canbus-simulation-system/blob/main/demo/vehicle-sim.mp4)
+
+---
 
 All data in the demo is **artificial**.
 
@@ -182,6 +195,13 @@ Located in /docs/
 |  **Frontend**       |  React, Three.js                   |
 |  **Documentation**  |  Markdown, Draw.io                 |
 
+## 📡 Custom CAN Reverse Engineering Tools
+
+- This project includes upcoming tools to:
+- detect byte-level anomalies
+- cluster signals by entropy and change rate
+- generate candidate DBC mappings
+
 ## ⚠️ Disclaimer
 
 - This repo contains no proprietary or NIWC code.
@@ -202,6 +222,10 @@ I am a Cognitive Science (Machine Learning) and Computer Science–focused resea
 This project represents the intersection of software engineering, cognitive science, and real-time embedded systems.
 
 ## ⭐ If you find this project valuable, please consider starring the repo
+
+## 📬 Contact
+
+Open an issue or DM if you'd like help implementing new vehicle physics, dashboard visualizations, or CAN analytics.
 
 ---
 
