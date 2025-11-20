@@ -1,7 +1,0 @@
-plugins:
-  - jekyll-optional-front-matter
-  - jekyll-readme-index
-
-include:
-  - videos
-  - "*.mp4"
