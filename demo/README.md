@@ -6,6 +6,13 @@ This folder contains demonstration videos that showcase both the **data engineer
 
 ## 🚗 1. CAN Bus Playback + Hex Heatmap (20s)
 
+<!-- Cinematic AAA-Style Trailer -->
+<video src="https://avensky.github.io/canbus-simulation-system/demo/vehicle-sim.mp4"
+       controls
+       width="100%">
+  Your browser does not support the video tag.
+</video>
+
 **File:** `canbus-demo.mp4`
 
 This short demo highlights the data‑processing architecture:
@@ -23,6 +30,13 @@ Use this video to understand the underlying system behavior before signals reach
 ---
 
 ## 🏙️ 2. Full 3D Vehicle Simulation
+
+<!-- Canbus Demo -->
+<video src="https://avensky.github.io/canbus-simulation-system/demo/canbus-demo.mp4"
+       controls
+       width="100%">
+  Your browser does not support the video tag.
+</video>
 
 **File:** `vehicle-sim.mp4`
 
