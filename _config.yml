@@ -1,0 +1,4 @@
+include:
+  - videos
+mime_types:
+  mp4: video/mp4
