@@ -1,4 +1,7 @@
+plugins:
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+
 include:
   - videos
-mime_types:
-  mp4: video/mp4
+  - "*.mp4"
