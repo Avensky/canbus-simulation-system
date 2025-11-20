@@ -7,7 +7,7 @@
 ## 🎮 Vehicle Simulation Demo
 
 <!-- Cinematic AAA-Style Trailer -->
-<video src="https://avensky.github.io/canbus-simulation-system/docs/vehicle-sim-web.mp4"
+<video src="https://avensky.github.io/canbus-simulation-system/videos/vehicle-sim.mp4"
        controls
        width="100%">
   Your browser does not support the video tag.
@@ -63,14 +63,14 @@ This repository contains the **safe public version** of that work.
 
 See the `demo/` folder for:
 
-- `vehicle-sim.mp4` (driving demo recording)  
-- `canbus-demo.mp4` (canbus session demo recording)  
+- vehicle-sim
+- canbus-demo
 - screenshots
 
 ### 🔹 CAN Bus + Physics Demo
 
 <!-- Canbus Demo -->
-<video src="https://avensky.github.io/canbus-simulation-system/docs/canbus-demo-web.mp4"
+<video src="https://avensky.github.io/canbus-simulation-system/videos/canbus-demo.mp4"
        controls
        width="100%">
   Your browser does not support the video tag.
@@ -191,8 +191,6 @@ Located in /docs/
 - system-overview.md – Full system explanation
 - research-background.md – CAN bus architecture and motivation
 - physics-engine-notes.md – Vehicle dynamics modeling
-**File:** `vehicle-sim.mp4`
-**File:** `canbus-demo.mp4`
 
 ## 📊 Technologies
 
