@@ -2,12 +2,12 @@
   <img src="./banner.svg" width="100%" />
 </p>
 
-# 🛠️ CAN Bus Real-Time Vehicle Simulation System
+# 🛠️ CAN Bus Real-Time Vehicle Simulation
 
 ## 🎮 Vehicle Simulation Demo
 
 <!-- Cinematic AAA-Style Trailer -->
-<video src="https://avensky.github.io/canbus-simulation-system/demo/vehicle-sim.mp4"
+<video src="https://avensky.github.io/canbus-simulation-system/docs/vehicle-sim.mp4"
        controls
        width="100%">
   Your browser does not support the video tag.
@@ -70,7 +70,7 @@ See the `demo/` folder for:
 ### 🔹 CAN Bus + Physics Demo  
 
 <!-- Cinematic AAA-Style Trailer -->
-<video src="https://avensky.github.io/canbus-simulation-system/demo/canbus-demo.mp4"
+<video src="https://avensky.github.io/canbus-simulation-system/docs/canbus-demo.mp4"
        controls
        width="100%">
   Your browser does not support the video tag.
@@ -79,7 +79,7 @@ See the `demo/` folder for:
 ### 🔹 Cinematic Vehicle Simulation  
 
 <!-- Canbus Demo -->
-<video src="https://avensky.github.io/canbus-simulation-system/demo/vehicle-sim.mp4"
+<video src="https://avensky.github.io/canbus-simulation-system/docs/vehicle-sim.mp4"
        controls
        width="100%">
   Your browser does not support the video tag.
@@ -200,6 +200,8 @@ Located in /docs/
 - system-overview.md – Full system explanation
 - research-background.md – CAN bus architecture and motivation
 - physics-engine-notes.md – Vehicle dynamics modeling
+**File:** `vehicle-sim.mp4`
+**File:** `canbus-demo.mp4`
 
 ## 📊 Technologies
 
