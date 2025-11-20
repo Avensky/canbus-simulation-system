@@ -1,194 +1,221 @@
-# 🧮 Physics Engine Notes  
-### Vehicle Dynamics Model for Real-Time CAN Bus Simulation
+<p align="center">
+  <strong>
+    <a href="../README.md">🏠 Home</a> •
+    <a href="../docs/">📘 Documentation</a> •
+    <a href="../demo/">🎥 Demo Videos</a> •
+    <a href="../data/">📊 Data Samples</a>
+  </strong>
+</p>
 
-This document summarizes the physics concepts used to design a real-time vehicle simulation engine compatible with CAN bus signal visualization.  
-It is written for clarity, reproducibility, and research purposes.
+# 🧮 Physics Engine Notes  
+
+### *Vehicle Dynamics Model for Real-Time CAN Bus & Embodied Simulation Research*
+
+This document provides a structured overview of the physics engine powering the real-time simulation environment.  
+Its purpose is **research clarity**, **reproducibility**, and **future extensibility** as the project grows to support other autonomous systems (UGVs, tracked vehicles, drones).
+
+The engine is designed to produce **physically plausible behavior** with **low computational cost**, enabling real-time performance for visualization, CAN signal synthesis, and interactive control.
 
 ---
 
-# 1. Overview
+# 1. Conceptual Overview
 
-The physics engine models how a vehicle responds to:
-- acceleration  
-- braking  
-- steering  
-- suspension movement  
-- friction and traction  
-- mass distribution  
-- wheel forces  
+The simulation engine models the dynamics of an **embodied agent**—a vehicle with:
 
-The goals of the physics engine are:
-- **stable real-time performance**  
-- **physically plausible movement**  
-- **compatibility with CAN telemetry**  
-- **smooth output for visualization (speed, RPM, orientation)**  
+- forces  
+- mass  
+- wheels  
+- friction  
+- suspension  
+- orientation  
+
+This enables researchers to explore:
+
+- signal behavior under physical constraints  
+- sensorimotor loops (input → state → action → feedback)  
+- machine-learning on consistent time-series data  
+- simulation-to-real transfer experiments  
+
+The engine is built on a simplified but robust model inspired by real automotive dynamics and game-engine physics.
 
 ---
 
 # 2. Coordinate System
 
-We use a right-handed coordinate system:
+A **right-handed** coordinate system is used:
 
 - **X-axis** → right  
 - **Y-axis** → up  
 - **Z-axis** → forward  
 
-Vehicle motion is primarily in the X–Z plane, with Y used for suspension movement.
+Vehicle motion occurs primarily in the **XZ plane**, with Y reserved for suspension and body pitch/roll.
 
 ---
 
-# 3. Core Mathematical Concepts
+# 3. Core Mathematical Tools
 
-### 3.1 Vectors
-Used for velocity, acceleration, forces, wheel direction, etc.
+### **3.1 Vectors**
 
-### 3.2 Quaternions
-Used for orientation to avoid gimbal lock.
+Used for position, velocity, force, wheel direction, and linear acceleration.
 
-### 3.3 Integration
-The physics engine approximates continuous motion using:
-- semi-implicit Euler  
-- timestep `dt` from a stable clock (e.g., 60 Hz)
+### **3.2 Quaternions**
+
+Used for orientation to avoid gimbal lock and maintain smooth rotation across 3D axes.
+
+### **3.3 Numerical Integration**
+
+The engine uses a **semi-implicit Euler integrator**:
+
+```
+v = v + a * dt
+x = x + v * dt
+```
+
+This method is stable, inexpensive, and well-suited for real-time applications.
 
 ---
 
 # 4. Vehicle Body Parameters
 
-Example parameters:
+Representative parameters (adjustable per vehicle):
 
 ```
-mass: 1500 kg
-wheelRadius: 0.34 m
-wheelBase: 2.8 m
-trackWidth: 1.6 m
-inertiaTensor: { x: 400, y: 1200, z: 1300 }
-dragCoefficient: 0.32
-rollingResistance: 12.5
+mass = 1500 kg
+wheelRadius = 0.34 m
+wheelBase = 2.8 m
+trackWidth = 1.6 m
+inertiaTensor = { x: 400, y: 1200, z: 1300 }
+dragCoefficient = 0.32
+rollingResistance = 12.5
 ```
 
-These parameters influence every subsystem.
+These values determine:
+
+- responsiveness  
+- stability  
+- traction  
+- orientation dynamics  
+
+The architecture supports **future expansion** to drones and tracked/holonomic platforms.
 
 ---
 
 # 5. Suspension Model (Raycast Vehicle)
 
-Each wheel has a suspension strut modeled as:
+Each wheel uses a **spring-damper** suspension system:
 
 ```
 F_spring = k * (restLength - currentLength)
-F_damper = c * (compressionSpeed)
+F_damper = c * compressionSpeed
 ```
 
 Where:
-- `k` = spring stiffness  
-- `c` = damping coefficient  
 
-Suspension stabilizes the vehicle and impacts handling.
+- **k** = spring stiffness  
+- **c** = damping coefficient  
+
+Suspension stabilizes the vehicle, preserves wheel-ground contact, and affects ride dynamics.
 
 ---
 
 # 6. Wheel Physics
 
-### 6.1 Longitudinal Slip (Acceleration/Braking)
+Wheels are the primary interface between the simulated agent and the ground.
+
+### **6.1 Longitudinal Slip (Acceleration & Braking)**
 
 Slip ratio:
 
 ```
-slip = (wheelAngularVelocity * wheelRadius - vehicleForwardSpeed) / max(vehicleForwardSpeed, smallValue)
+slip = (wheelAngularVelocity * wheelRadius - vehicleForwardSpeed) 
+        / max(vehicleForwardSpeed, smallValue)
 ```
 
-### 6.2 Traction Curve
+### **6.2 Traction Curve**
 
-Slip ratio feeds into a traction force curve (simplified Pacejka model):
+A simplified traction curve approximates the **Pacejka Magic Formula**:
 
 ```
-F_long = tractionCurve(slip) * normalForce
+F_longitudinal = tractionCurve(slip) * normalForce
 ```
 
-This defines:
+This governs:
+
 - grip  
 - wheelspin  
-- braking effectiveness  
+- braking behavior  
 
 ---
 
 # 7. Steering Model
 
-Front wheels rotate by steering angle θ:
+Front wheels rotate by a steering angle θ:
 
 ```
 θ = steeringInput * maxSteeringAngle
 ```
 
-The vehicle uses **Ackermann steering geometry** for realistic turning.
+To improve realism, the system supports **Ackermann steering geometry**, reducing tire scrub and enabling accurate turning radii.
 
 ---
 
-# 8. Engine & Drivetrain
+# 8. Engine & Drivetrain Model
 
-### 8.1 RPM Model
+### **8.1 RPM Computation**
 
 ```
 RPM = wheelAngularVelocity * gearRatio * finalDriveRatio * 60 / (2π)
 ```
 
-### 8.2 Torque Curve
+### **8.2 Torque Curve**
 
-Engine torque is mapped from an RPM → Torque curve:
+The engine maps RPM → torque using a tunable response curve:
 
 ```
-1000 RPM → 120 Nm
-2500 RPM → 210 Nm
-4000 RPM → 240 Nm
+1000 RPM → 120 Nm  
+2500 RPM → 210 Nm  
+4000 RPM → 240 Nm  
 6000 RPM → 210 Nm
 ```
 
-### 8.3 Gearbox
+### **8.3 Gearbox Model**
 
-- gear ratios  
-- final drive  
+Features:
+
+- multiple forward gears  
 - clutch slip model  
 - rev limiter  
+- gear-dependent torque scaling  
 
 ---
 
-# 9. Force Summation
+# 9. Summation of Forces
 
-Total force on the vehicle:
+Total longitudinal and lateral force on the vehicle:
 
 ```
 F_total = 
-    F_engine 
-  + F_brake
-  + F_drag
-  + F_rolling
-  + F_longitudinal
-  + F_lateral
+    F_engine +
+    F_brake +
+    F_drag +
+    F_rolling +
+    F_longitudinal +
+    F_lateral
 ```
 
-Acceleration:
+Newton’s second law provides acceleration:
 
 ```
 a = F_total / mass
 ```
 
-Velocity integration:
-
-```
-v = v + a * dt
-```
-
-Position integration:
-
-```
-x = x + v * dt
-```
+Velocity & position integrate forward in time.
 
 ---
 
-# 10. Orientation & Rotation
+# 10. Orientation & Rotational Dynamics
 
-Angular velocity is computed from torque:
+Yaw, pitch, and roll arise from torque and inertia:
 
 ```
 angularAcceleration = torque / inertia
@@ -196,53 +223,53 @@ angularVelocity += angularAcceleration * dt
 orientationQuaternion = integrate(angularVelocity)
 ```
 
-This controls:
-- pitch  
-- yaw  
-- roll  
+Quaternions ensure stability during dynamic maneuvers.
 
 ---
 
 # 11. CAN-Compatible Output Signals
 
-The simulation generates signals compatible with CAN visualization:
+To unify the physics engine with data visualization, the simulator outputs values analogous to CAN telemetry:
 
-| Sim Variable    | CAN Equivalent             |
-|-----------------|----------------------------|
-| `speed`         | Vehicle Speed              |
-| `rpm`           | Engine RPM                 |
-| `gear`          | Gear Position              |
-| `steeringAngle` | Steering Sensor Value      |
-| `throttle`      | Accelerator Pedal Position |
-| `brakeForce`    | Brake Pressure             |
+| Physics Variable | Simulated CAN Equivalent |
+|------------------|--------------------------|
+| speed            | Vehicle Speed            |
+| rpm              | Engine RPM               |
+| gear             | Gear State               |
+| steeringAngle    | Steering Sensor          |
+| throttle         | Accelerator Position     |
+| brakeForce       | Brake Pressure           |
 
-These can be streamed directly to the frontend.
+This enables **frame diffing**, **frequency analysis**, and **ML pipeline compatibility**.
 
 ---
 
 # 12. Real-Time Constraints
 
-Simulation target: **60 updates per second**
+Target update rate: **60 Hz**
 
-Stability maintained by:
+Stability techniques:
 
-- fixed timestep loop  
-- clamped forces  
-- interpolation smoothing  
-- normalized quaternions  
+- fixed timestep  
+- clamping of extreme forces  
+- smoothing of sensor outputs  
+- normalized quaternion updates  
+
+The design prioritizes **performance** and **interpretability** over extreme realism.
 
 ---
 
 # 13. Summary
 
-This physics engine captures the essential dynamics necessary for:
-- vehicle research  
-- real-time visualization  
-- CAN bus signal interpretation  
-- cognitive systems modeling  
-- machine learning experiments  
+This physics engine provides a computationally efficient and scientifically meaningful model of an embodied agent operating under realistic physical constraints.  
+Its simplicity makes it:
 
-It is fully compatible with both synthetic and hardware-based CAN data pipelines.
+- ideal for **cognitive modeling**  
+- friendly for **machine learning datasets**  
+- extensible to **autonomy research and drones**  
+- suited for **interactive simulation & visualization**
+
+This foundation supports both real-time visualization and rigorous experimental workflows.
 
 ---
 

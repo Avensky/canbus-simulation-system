@@ -1,173 +1,244 @@
+<p align="center">
+  <strong>
+    <a href="../README.md">🏠 Home</a> •
+    <a href="../docs/">📘 Documentation</a> •
+    <a href="../demo/">🎥 Demo Videos</a> •
+    <a href="../data/">📊 Data Samples</a>
+  </strong>
+</p>
+
 # 📘 System Overview  
-### CAN Bus Real-Time Vehicle Simulation System
 
-This document provides a full technical and conceptual overview of the simulation + visualization system developed during my research internship at the Naval Information Warfare Center (NIWC).  
-The system merges:
+### *CAN Bus Real-Time Vehicle Simulation System*
 
-- real-time CAN bus telemetry  
-- embedded hardware (Raspberry Pi)  
-- a physics-based vehicle simulation engine  
-- real-time WebSocket streaming  
-- a 3D visualization client  
+This document provides an academic, research-focused overview of the **CAN Bus Real-Time Vehicle Simulation System**—an environment designed for studying **embodied cognition**, **real-time data pipelines**, **vehicle physics**, and **machine learning** using synthetic CAN-style telemetry.  
 
-All content here is safe and generalized.
+All content here is **safe**, **synthetic**, and represents the public version of work developed during my NIWC research internship.
+
+---
 
 # 🧩 1. System Goals
 
-The system was designed to provide:
+The system is engineered to serve as a **research testbed** where interactive simulation, signal processing, and ML workflows coexist.  
+Its goals are to provide:
 
-1. **A realistic vehicle simulation environment**  
-2. **Interactive visualization of CAN signals**  
-3. **Reliable real-time communication across devices**  
-4. **A modular architecture suitable for research**  
-5. **Compatibility with embedded CAN hardware**  
-6. **A flexible platform for ML and cognitive science experiments**
+1. **A realistic, physics-based vehicle simulation environment**  
+2. **Interactive visualization** of high-frequency CAN-like signals  
+3. **Reliable real-time communication** between backend and frontend  
+4. **A modular architecture suitable for scientific experimentation**  
+5. **Compatibility with embedded CAN hardware or synthetic data**  
+6. **A flexible platform** for studying cognitive systems, autonomy, and robotics
 
-This enabled researchers to:
-
-- test signal decoding logic  
-- visualize vehicle dynamics  
-- simulate failure events  
-- support prototyping in autonomy/cybersecurity  
+The architecture emphasizes **interpretability**, **reproducibility**, and **modularity**, enabling research across cognitive science, machine learning, and embedded systems.
 
 ---
 
 # 🛠️ 2. High-Level Architecture
-[ CAN Hardware ] → [ Raspberry Pi ] → [ Python Listener ] 
-→ [ WebSocket Server ] → [ Visualization Client ]
 
+```
+[ CAN Hardware or Synthetic Playback ]
+                  ↓
+        [ Python Normalization Layer ]
+                  ↓
+          [ WebSocket Data Server ]
+                  ↓
+        [ Real-Time Visualization ]
+                  ↓
+       [ 3D Physics-Based Simulation ]
+```
 
 ### Components
 
-|        Component        |                               Purpose                                   |
-|-------------------------|-------------------------------------------------------------------------|
-|    **CAN Hardware**     | Collects real vehicle data through OBD-II or direct CAN tapping         |
-|    **Raspberry Pi**     | Converts CAN frames to socketcan interface & streams to Python listener |
-|   **Python Listener**   | Reads frames, decodes them, normalizes signal values                    |
-|   **WebSocket Server**  | Broadcasts high-frequency frames to frontend clients                    |
-|    **Visualization**    | Interactive gauges, charts, and optional 3D dynamics                    |
+| Component | Purpose |
+|----------|---------|
+| **CAN Hardware / Synthetic Data** | Provides high-frequency signals representing throttle, RPM, steering, etc. |
+| **Raspberry Pi or Host Machine** | Interfaces with CAN or supplies synthetic data |
+| **Python Listener** | Normalizes raw frames into structured messages |
+| **WebSocket Server** | Broadcasts signals at 30–120 Hz |
+| **3D Visualization Client** | Interactive visualization via React + Three.js |
+| **Physics Engine** | Models vehicle dynamics and motion |
+
+This layered design supports both **research reproducibility** and **interactive exploration**.
 
 ---
 
 # 📡 3. Data Pipeline
 
-### Step 1 — CAN Acquisition  
-The Raspberry Pi listens on a CAN network using tools like:
+### **Step 1 — Data Acquisition**
 
-- `socketcan`
-- `python-can`
+CAN frames or synthetic playback are received at **10–100+ Hz**.  
+Example source technologies:
 
-Frames are captured at **10–100 Hz**, depending on bus load.
+- `socketcan`  
+- `python-can`  
+- synthetic CSV-based telemetry  
 
-### Step 2 — Normalization  
-Each frame is parsed:
+### **Step 2 — Normalization**
 
-- ID  
-- timestamp  
-- data bytes  
-- interpreted values (speed, rpm, throttle, etc.)
-
-### Step 3 — Broadcasting  
-Frames are sent over WebSockets using JSON packets:
+Frames are converted into structured packets:
 
 ```json
 {
-  "speed_kph": 32,
-  "rpm": 2050,
-  "steering_angle": -1.0,
-  "timestamp": 1.024
+  "speed_kph": 36,
+  "rpm": 2120,
+  "steering_angle": 1.2,
+  "timestamp": 3.883
 }
 ```
 
-### Step 4 — Visualization
-The frontend updates:
-- speed gauge
-- rpm gauge
-- time-series graphs
-- 3D model animations
-- All updates are real-time.
+### **Step 3 — Streaming**
+
+A lightweight WebSocket server broadcasts data to the frontend with minimal latency.
+
+### **Step 4 — Visualization**
+
+The frontend renders:
+
+- dashboard gauges  
+- time-series plots  
+- byte-level frame heatmaps  
+- 3D vehicle state updates  
+
+This architecture supports **real-time cognitive system modeling**, where perception, state estimation, and action are all visible.
+
+---
 
 # 🔧 4. Simulation Engine Overview
-The physics system uses concepts from raycast vehicle dynamics:
 
-## ✔ Suspension simulation
-Spring–damper model:
-- stiffness
-- damping
-- rest length
+The simulation engine models realistic vehicle physics to enable:
 
-## ✔ Wheel forces
-- longitudinal friction
-- lateral slip
-- traction curve
+- embodied agent behavior  
+- sensor-stream consistency  
+- real-time feedback  
+- smooth visualization  
 
-## ✔ Engine model
-- RPM → torque curve
-- gear ratios
-- clutch slip
-- rev limiter
+### Key Physical Subsystems
 
-## ✔ Vehicle body
-- inertia tensor
-- mass
-- center of mass
-- drag and lift
+#### **Suspension**
 
-## ✔ Orientation handling
-Quaternion math for smooth rotation without gimbal lock.
+A spring-damper system provides vertical motion and stability.
 
-# 🎮 5. Frontend Visualization
-The frontend is built with:
-- React → UI, components
-- Three.js → 3D vehicle representation
-- D3.js / Recharts → signal graphs
-- WebSocket client → real-time updates
-- Visualization elements:
-- Speed & RPM gauges
-- Line graphs for signals
-- 3D wheel or chassis animation
-- CAN frame inspector panel
+#### **Wheel Forces**
+
+Includes:
+
+- longitudinal traction  
+- lateral slip  
+- realistic grip curves  
+
+#### **Engine Model**
+
+Torque → RPM → wheel speed computations based on:
+
+- gear ratios  
+- throttle input  
+- simulated driveline behavior  
+
+#### **Vehicle Body**
+
+Mass, inertia, drag, and lift determine overall motion.  
+Orientation is handled using **quaternions**, avoiding gimbal lock.
+
+This physics layer allows the system to eventually support **drones**, **UGVs**, **tracked vehicles**, and more.
+
+---
+
+# 🎮 5. Real-Time Visualization
+
+The visualization frontend is built on:
+
+- **React**  
+- **Three.js / React Three Fiber**  
+- **WebSockets**  
+- optional **Recharts / D3**  
+
+### Visual elements include
+
+- Speed & RPM gauges  
+- Steering angle visualization  
+- Time-series graphs  
+- Live hex heatmaps for bytes  
+- 3D vehicle simulation  
+- Smooth 3rd-person ↔ 1st-person camera transitions  
+
+This design intentionally blends **research tooling** with the **expressiveness of games**, creating a powerful medium for understanding dynamic systems.
+
+---
 
 # 🧪 6. Synthetic Demo Mode
-The public demo uses:
-fake CAN frames
-smoothed speed + rpm curves
-randomized sensor noise
-This allows safe display without using restricted or proprietary data.
+
+To keep the public version safe and open:
+
+- All CAN signals are **synthetic**
+- Ranges and timing mimic real CAN behavior
+- No proprietary IDs or mappings are used  
+- Noise models simulate realistic imperfections  
+
+This enables:
+
+- reproducible demos  
+- ML experiments  
+- safe open-source release  
+
+---
 
 # 🧠 7. Cognitive Science & ML Applications
+
 This system supports research in:
-- Cognitive Systems
-- Vehicles act as observable cognitive agents with:
-- sensory input
-- internal state
-- feedback loops
-- action outputs
-- Machine Learning
 
-Real-time frames can train:
-- state estimation models
-- anomaly detection
-- behavior prediction systems
-- signal classification algorithms
-- Human–Machine Interaction
-- 3D visuals support usability research.
+### **Embodied Cognition**
 
-# 📄 8. Limitations (Public Version)
-This repo excludes:
-- original NIWC code
-- real CAN data
-- security-sensitive details
-- proprietary tooling
+Vehicles function as interpretable, physical agents:
 
-The simulation and diagrams are conceptual and educational.
+- sensors → state → action → feedback
+
+### **Time-Series Machine Learning**
+
+Frames can train models for:
+
+- anomaly detection  
+- predictive modeling  
+- sequence modeling  
+- sensor fusion  
+
+### **Autonomy & Robotics**
+
+The simulation environment can support:
+
+- imitation learning  
+- reinforcement learning  
+- behavioral cloning  
+- autonomous drone and UGV extensions  
+
+### **HMI Research**
+
+3D visualization aids human-machine interaction studies.
+
+---
+
+# 📄 8. Public Version Limitations
+
+This repository does **not** include:
+
+- restricted NIWC code  
+- real CAN bus captures  
+- proprietary decoding logic  
+- sensitive system mappings  
+
+All materials here are educational and research-oriented.
+
+---
 
 # 📌 9. Future Work
-- Expand 3D simulation accuracy
-- Add traffic + environment simulation
-- Create ML-ready datasets
-- Build CAN anomaly detection models
-- Add dashboard customization
+
+Upcoming directions include:
+
+- improved vehicle physics fidelity  
+- synthetic multi-vehicle environments  
+- anomaly-injection datasets  
+- drone & autonomous robot simulation  
+- ML-ready dataset generators  
+- advanced byte-level analytics tools  
 
 ---
 

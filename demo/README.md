@@ -1,78 +1,145 @@
-# 🎥 Project Demonstration
+<p align="center">
+  <strong>
+    <a href="../README.md">🏠 Home</a> •
+    <a href="../docs/">📘 Documentation</a> •
+    <a href="../demo/">🎥 Demo Videos</a> •
+    <a href="../data/">📊 Data Samples</a>
+  </strong>
+</p>
 
-This folder contains demonstration videos that showcase both the **data engineering** and **real‑time simulation** components of the CAN Bus Research & Vehicle Physics project.
+# 📁 Data Directory  
 
----
+### *Synthetic CAN Bus & Telemetry Samples for Research and Visualization*
 
-## 🚗 1. CAN Bus Playback + Hex Heatmap (20s)
+This directory contains **fully synthetic, non-proprietary CAN-style telemetry files** used throughout the CAN Bus Real-Time Vehicle Simulation research environment.  
+The datasets here serve as safe, reproducible examples for:
 
-<!-- Cinematic AAA-Style Trailer -->
-<video src="https://caring-vegan.s3.us-west-2.amazonaws.com/portfolio/vehicle-sim-clean.mp4"
-       controls width="100%">
-</video>
+- real-time visualization  
+- machine learning prototyping  
+- signal processing demonstrations  
+- simulation playback  
+- byte-level analysis  
+- cognitive modeling experiments  
 
-This short demo highlights the data‑processing architecture:
-
-### What it Demonstrates
-
-- Deterministic synthetic CAN-style data playback
-- Real-time parsing of throttle + RPM signals  
-- Live hex heatmap visualization  
-- CLI-based record & replay engine  
-- Reproducible sessions for ML and signal analysis  
-
-Use this video to understand the underlying system behavior before signals reach the visualization or physics layers.
-
----
-
-## 🏙️ 2. Full 3D Vehicle Simulation
-
-<!-- Canbus Demo -->
-<video src="https://caring-vegan.s3.us-west-2.amazonaws.com/portfolio/canbus-demo-clean.mp4"
-       controls width="100%">
-</video>
-
-This upcoming demo will showcase:
-
-### What It Will Demonstrate
-
-- Fully rendered 3D driving world  
-- High‑poly Rocket Bunny FRS/BRZ
-- Real‑time vehicle physics  
-- Smooth 3rd‑person → 1st‑person camera transitions  
-- Interactive controller input and UI elements  
-
-This video will emphasize the simulation side of the project and serve as a visual highlight of your engineering work.
+They mirror the *structure* of real automotive time-series data while masking all real-world identifiers or proprietary mappings.
 
 ---
 
-## 📌 Roadmap: Playback‑Driven Vehicle Movement
+# 📦 Included Datasets
 
-A future milestone will integrate the playback engine with the vehicle physics system.  
-This will enable:
+## 1. `scion-frs-throttle_raw.csv`
 
-- Real‑world → simulated driving reenactment  
-- Behavior cloning datasets  
-- Imitation learning  
-- Offline reinforcement learning  
-- Automated driving experiments  
-- Synthetic dataset generation  
-- Trajectory replication & debugging  
+A low-level synthetic throttle waveform dataset representing raw time-series telemetry.
 
-This feature is essential for the long-term **ML + Cognitive Science** research direction.
+### 📌 Useful For
 
----
+- studying noisy throttle behavior  
+- observing raw temporal structure  
+- signal preprocessing and filtering  
+- early-stage ML feature extraction  
+- realistic noise model experimentation  
 
-## 📁 Folder Structure
+### 🚗 Contents
 
-```
-demo/
-│── vehicle-sim-Cover.jpg
-│── README.md              # this file
-```
+- timestamps  
+- throttle percentage  
+- RPM-adjacent synthetic behaviors  
+- small random noise to emulate sensors  
+
+This file approximates real CAN-adjacent throttle logs while remaining fully synthetic.
 
 ---
 
-## 📞 Contact & Links
+## 2. `scion-frs-throttle_logs.csv`
 
-For more details, visit the main project README or open an issue.
+A cleaner, higher-level version of the raw throttle dataset.  
+Ideal for pipelines that expect structured, ML-ready data.
+
+### 📌 Useful For
+
+- dashboard visualizations  
+- calm, well-structured ML preprocessing  
+- JSON conversion for WebSocket demos  
+- time-aligned multi-signal research examples  
+
+### 🚗 Contents
+
+- processed throttle curve  
+- simplified RPM dynamics  
+- normalized timing  
+- high-quality synthetic patterns  
+
+This dataset demonstrates the difference between **raw** vs **processed** telemetry in research workflows.
+
+---
+
+# 🔍 Data Notes
+
+These datasets capture:
+
+- **realistic time-series structure**  
+- **synthetic signal noise**  
+- **deterministic playback behavior**  
+- **patterns similar to vehicle subsystem dynamics**  
+
+But they **do not** contain:
+
+- real CAN IDs  
+- manufacturer signal mappings  
+- sensitive hardware information  
+- identifiable driving behavior  
+
+They are intentionally designed for **safe academic use**.
+
+---
+
+# 🔧 Recommended Research Uses
+
+These synthetic time-series samples can be plugged directly into:
+
+### 🧪 Machine Learning  
+
+- LSTM/GRU sequence modeling  
+- anomaly detection  
+- forecasting  
+- signal classification experiments  
+
+### 📈 Signal Processing  
+
+- smoothing and filtering  
+- derivatives (acceleration/jerk)  
+- low-pass vs high-pass filtering  
+- resampling experiments  
+
+### 🎮 Simulation  
+
+- driving physics visualization  
+- dashboard reconstruction  
+- real-time playback via WebSockets  
+
+### 👨‍🏫 Coursework  
+
+Perfect for assignments in:
+
+- cognitive science  
+- machine learning  
+- data visualization  
+- real-time systems  
+
+---
+
+# 📁 Future Additions
+
+Planned dataset expansions include:
+
+- simulated multi-signal CAN frames  
+- RPM-based telemetry  
+- combined throttle–RPM–steering patterns  
+- noise-injected variants for ML robustness testing  
+- large-scale multi-session synthetic logs  
+
+These will support growing research directions in **autonomy**, **embodied modeling**, and **predictive systems**.
+
+---
+
+# End of Document

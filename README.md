@@ -2,241 +2,114 @@
   <img src="./banner.svg" width="100%" />
 </p>
 
-# 🛠️ CAN Bus Real-Time Vehicle Simulation
-
-## 🎮 Vehicle Simulation Demo
-
-<!-- Cinematic AAA-Style Trailer -->
-<video
-  src="https://caring-vegan.s3.us-west-2.amazonaws.com/portfolio/vehicle-sim-clean.mp4"
-  controls
-  width="100%">
-  Your browser does not support the video tag.
-</video>
-
-### *Research Case Study • Simulation Engineering • Cognitive Systems • Embedded Computing*
-
-This repository documents the design, architecture, and frontend demonstration of a **real-time CAN bus visualization and vehicle simulation system** I developed during my research internship with the **Naval Information Warfare Center (NIWC)**.
-
-The original codebase used during the internship is **not included** (restricted).  
-This public repository contains:
-
-- A full **system architecture case study**
-- **Data pipeline documentation**
-- A **frontend demo** using simulated CAN data
-- **Physics engine design notes**
-- Engineering diagrams and high-level design
-- Research context and explanation
-
-This repo highlights my experience in **simulation engineering**, **automotive telemetry**, **real-time systems**, **cognitive science**, and **machine learning-oriented environments**.
+<p align="center">
+  <strong>
+    <a href="./README.md">🏠 Home</a> •
+    <a href="./docs/">📘 Documentation</a> •
+    <a href="./demo/">🎥 Demo Videos</a> •
+    <a href="./data/">📊 Data Samples</a>
+  </strong>
+</p>
 
 ---
 
-## 🚗 Project Overview
+# 🧠 CAN Bus Research & Real-Time Vehicle Simulation  
 
-Modern vehicles generate hundreds of real-time CAN bus signals (speed, RPM, diagnostics, throttle, steering angle). Research teams need:
+### *A Cognitive Systems–Inspired Platform for Interactive Visualization, Embodied Modeling, and Machine Learning Research*
 
-- A **safe, controlled simulation environment**
-- Real-time **interactive visualization tools**
-- A system capable of merging **physical simulation** with **streamed sensor data**
-- A platform for **autonomy research**, **HMI**, and **cybersecurity testing**
+This project is an **open research environment** combining:
 
-### The original prototype had
+- **Real-time synthetic CAN bus telemetry**  
+- **A physics-based 3D vehicle simulation engine**  
+- **High-frequency data streaming**  
+- **Interactive 3D visualization (game-like feel)**  
+- **Modular ML-ready pipelines**  
+- **Embodied autonomous systems research potential (cars, drones, robots)**  
 
-- Static, non-interactive gauge images  
-- No backend capable of streaming real data  
-- No simulation engine  
-- No extensible architecture  
+It is designed to resemble the structure of a **cognitive agent**:  
+sensing → internal state → dynamics → action → feedback.
 
-### I rebuilt the system completely
-
-✔ Real-time physics-based vehicle simulation  
-✔ Raspberry Pi CAN interface integration  
-✔ WebSockets for high-speed data streaming  
-✔ Interactive visualization in 2D and 3D  
-✔ Unified architecture for simulation + real signals  
-
-This repository contains the **safe public version** of that work.
+This public repository is the **academic, research-focused version** of the project developed during my work with the *Naval Information Warfare Center (NIWC)*.  
+All data and code here are **synthetic, safe, and generalized**.
 
 ---
 
-## 🎥 Demo
+# 🎥 Demonstration Videos
 
-See the `demo/` folder for:
+### 🎬 **Full 3D Vehicle Simulation (S3 Hosted)**
 
-- vehicle-sim
-- canbus-demo
-- screenshots
-
-### 🔹 CAN Bus + Physics Demo
-
-<!-- Canbus Demo -->
-<video
-  src="https://caring-vegan.s3.us-west-2.amazonaws.com/portfolio/canbus-demo-clean.mp4"
-  controls
-  width="100%">
-  Your browser does not support the video tag.
-</video>
+<video src="https://caring-vegan.s3.us-west-2.amazonaws.com/portfolio/vehicle-sim-clean.mp4"
+       controls width="100%"></video>
 
 ---
 
-All data in the demo is **artificial**.
+### 🛰️ **CAN Bus Playback, Frame Comparison, & Byte Variability Visualization**
 
-## 📊 Data Samples (Synthetic Telemetry)
+<video src="https://caring-vegan.s3.us-west-2.amazonaws.com/portfolio/canbus-demo-clean.mp4"
+       controls width="100%"></video>
 
- `/data` directory contains **synthetic CAN-style telemetry datasets** used to demonstrate the system’s playback, visualization, and preprocessing pipelines.  
-These files simulate realistic throttle, RPM, and timing behavior while containing **no proprietary or hardware-derived CAN frames**.
+These demonstrations are designed to highlight:
 
----
-
-## 📁 Included Files
-
-Located in /data/
-
-### 🔸 `scion-frs-throttle_raw.csv`
-
-- Raw synthetic throttle waveform  
-- High-frequency time-series data  
-- Useful for testing parsers and preprocessing steps  
-
-### 🔹 `scion-frs-throttle_logs.csv`
-
-- Cleaned & structured throttle signals  
-- Ideal for dashboards and ML examples  
-- Demonstrates typical CAN-adjacent log formatting  
-
-📌 For a full description of the datasets, visit:  
-➡️ **[`/data/README.md`](data/README.md)**
+- exploratory **data playback**
+- **frame-A / frame-B comparison**
+- **byte-level variability**
+- **frequency and anomaly visualizations**
+- natural flow into ML, cognitive modeling, and autonomy research
 
 ---
 
-## 🚀 Suggested Uses
+# 🔍 Research Motivation
 
-- Driving frontend gauges and animations
-- Training small time-series ML models
-- Demonstrating CSV → JSON pipelines
-- Teaching CAN-style preprocessing workflows
-- Creating reproducible simulation playback demos
+Modern vehicles act as robust embodied agents with:
 
----
+- structured sensory channels (speed, throttle, RPM, steering)
+- real-time internal dynamics
+- predictable physics
+- interpretable state transitions
 
-## 🧰 System Architecture
+This makes them ideal for research in:
 
-             [ CAN Hardware ]
+- **Cognitive science & embodied cognition**  
+- **Machine learning on high-frequency temporal data**  
+- **Signal decoding / byte-level analysis**  
+- **Simulation-to-reality modeling**  
+- **Human–machine interaction**  
+- **Autonomy & robotics (cars, drones, UGVs)**  
 
-                    ↓
-      
-      [ Raspberry Pi + CAN Interface ]
-
-                    ↓
-      
-          [ Python CAN Listener ]
-
-                    ↓
-      
-         [ WebSocket Data Server ]
-
-                    ↓
-      
-    [ React / Three.js Visualization ]
-
-### Architecture Layers
-
-|           Layer         |                      Description                          |
-|-------------------------|-----------------------------------------------------------|
-|   **Hardware Layer**    | Raspberry Pi + CAN transceiver + OBD-II connection        |
-|     **Data Layer**      | Python listener for CAN signals, message normalization    |
-| **Communication Layer** | WebSocket server for broadcasting high-frequency frames   |
-|  **Simulation Layer**   | Vehicle physics engine: forces, suspension, RPM, movement |
-| **Visualization Layer** | Gauges, 3D scene, charts, real-time signal tracking       |
-
-See `/docs/system-overview.md` for complete details.
+This project aims to build a **research playground**:  
+a place where cognitive modeling, simulation, vehicle physics, and ML intersect.
 
 ---
 
-## 🔍 Research Motivation
+# 🧩 System Architecture
 
-This project supports research in:
+A high-level overview of the research system:
 
-- Cognitive systems & computational modeling
-- Embedded real-time systems  
-- Vehicle cybersecurity  
-- Human–machine interaction (HMI)  
-- Machine learning using sensory/telemetry streams  
-- Simulation environments for autonomous systems  
+```
+[ Synthetic CAN Data / Simulation ] 
+                 ↓
+      [ Python Normalization Layer ]
+                 ↓
+        [ WebSocket Data Server ]
+                 ↓
+       [ Real-Time Visualization ]
+                 ↓
+       [ 3D Physics-Based Simulator ]
+```
 
-Vehicles are excellent cognitive systems:
+### Core Subsystems
 
-- structured sensory input  
-- predictable physical behavior  
-- interpretable high-frequency data  
-- clear cause–effect relationships  
+| Layer | Description |
+|-------|-------------|
+| **Data Layer** | Synthetic CAN-style signals, frame playback, byte-level diffing |
+| **Web Layer** | High-frequency WebSocket broadcasts |
+| **Simulation Layer** | 3D vehicle physics, suspension, engine, drivetrain |
+| **Visualization Layer** | 3D world, gauges, signal graphs |
+| **ML Hooks** | Frame deltas, frequency tables, change-rate features |
 
-This makes the domain ideal for ML, AI modeling, and signal decoding research.
-
----
-
-## 🧪 Frontend Demo (Synthetic CAN Data)
-
-The demo frontend includes:
-
-<!-- - A simulated CAN feed (`fake-can-frames.json`)   -->
-- 3D Simulation
-- Live gauge updates  
-- Line charts  
-- Modular signal parser  
-
-## 📚 Documentation
-
-Located in /docs/
-
-- system-overview.md – Full system explanation
-- research-background.md – CAN bus architecture and motivation
-- physics-engine-notes.md – Vehicle dynamics modeling
-
-## 📊 Technologies
-
-|      Category       |               Tools                |
-|---------------------|------------------------------------|
-|  **Embedded**       |  Raspberry Pi, CANable, socketcan  |
-|  **Backend**        |  Python, python-can, asyncio       |
-|  **Communication**  |  WebSockets, JSON                  |
-|  **Simulation**     |  Cannon.js or custom JS physics    |
-|  **Frontend**       |  React, Three.js                   |
-|  **Documentation**  |  Markdown, Draw.io                 |
-
-## 📡 Custom CAN Reverse Engineering Tools
-
-- This project includes upcoming tools to:
-- detect byte-level anomalies
-- cluster signals by entropy and change rate
-- generate candidate DBC mappings
-
-## ⚠️ Disclaimer
-
-- This repo contains no proprietary or NIWC code.
-- All CAN signals used in demos are fully synthetic.
-- Architecture is generalized for portfolio and educational use.
-
-## 🧑‍🔬 About Me
-
-I am a Cognitive Science (Machine Learning) and Computer Science–focused research student interested in:
-
-- embedded AI systems
-- simulation engineering
-- computational modeling
-- robotics and autonomy
-- automotive systems
-- machine learning pipelines
-
-This project represents the intersection of software engineering, cognitive science, and real-time embedded systems.
-
-## ⭐ If you find this project valuable, please consider starring the repo
-
-## 📬 Contact
-
-Open an issue or DM if you'd like help implementing new vehicle physics, dashboard visualizations, or CAN analytics.
+For full documentation, visit:  
+📘 **[`/docs/`](docs/)**
 
 ---
 
-# End of Document
+# 📊 D
