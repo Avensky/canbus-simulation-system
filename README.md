@@ -7,7 +7,7 @@
 ## 🎮 Vehicle Simulation Demo
 
 <!-- Cinematic AAA-Style Trailer -->
-<video src="https://avensky.github.io/canbus-simulation-system/docs/vehicle-sim.mp4"
+<video src="https://avensky.github.io/canbus-simulation-system/docs/vehicle-sim-web.mp4"
        controls
        width="100%">
   Your browser does not support the video tag.
@@ -67,19 +67,10 @@ See the `demo/` folder for:
 - `canbus-demo.mp4` (canbus session demo recording)  
 - screenshots
 
-### 🔹 CAN Bus + Physics Demo  
-
-<!-- Cinematic AAA-Style Trailer -->
-<video src="https://avensky.github.io/canbus-simulation-system/docs/canbus-demo.mp4"
-       controls
-       width="100%">
-  Your browser does not support the video tag.
-</video>
-
-### 🔹 Cinematic Vehicle Simulation  
+### 🔹 CAN Bus + Physics Demo
 
 <!-- Canbus Demo -->
-<video src="https://avensky.github.io/canbus-simulation-system/docs/vehicle-sim.mp4"
+<video src="https://avensky.github.io/canbus-simulation-system/docs/canbus-demo-web.mp4"
        controls
        width="100%">
   Your browser does not support the video tag.
